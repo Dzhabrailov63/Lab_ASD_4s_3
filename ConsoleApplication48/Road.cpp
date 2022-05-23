@@ -52,17 +52,6 @@ int main() {
 		std::cout << "BFS " << std::endl;
 		g.bfs("Pashkinistan");
 		std::cout << std::endl;
-		std::cout << "DFS " << std::endl;
-		g.dfs("Pashkinistan");
-		std::cout << std::endl;
-		auto result = Dijkstra(g, "Pashkinistan", "Novgorod");
-		std::cout << " SHORTEST DISTANCE " << result.second << std::endl;
-		std::cout << " MINIMAL WAY DIJKSTRA :::::::  ";
-		auto end = --result.first.end();
-		auto i = result.first.begin();
-		for (end; end != i; end--)
-			std::cout << *end << ' ';
-		std::cout << *i << std::endl;
 		auto result2 = BellmanFord(g, "Pashkinistan", "Novgorod");
 		std::cout << " SHORTEST DISTANCE " << result2.second << std::endl;
 		std::cout << " MINIMAL WAY BELLMAN FORD :::::::  ";
