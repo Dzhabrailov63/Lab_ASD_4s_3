@@ -117,7 +117,7 @@ class road_network {
 
 	
 
-	void bfs_without(const TVertex& src)//в ширину
+	void bfs_without(const TVertex& src) //обход в ширину
 	{
 		auto i = find_v(src);
 		if (i == end()) {
@@ -128,8 +128,8 @@ class road_network {
 		i->edit_color(2);
 		auto begin = i->begin_edge();
 		auto final = i->end_edge();
-		auto start_dfs = begin;
-		auto final_dfs = final;
+		auto start_bfs = begin;
+		auto final_bfs = final;
 		for (begin; begin != final; begin++)
 		{
 			auto dst_vert = find_v(begin->_get_dst());
@@ -139,12 +139,12 @@ class road_network {
 				dst_vert->edit_color(1);
 			}
 		}
-		for (start_dfs; start_dfs != final_dfs; start_dfs++)
+		for (start_bfs; start_bfs != final_bfs; start_bfs++)
 		{
-			auto dst = start_dfs->_get_dst();
+			auto dst = start_bfs->_get_dst();
 			auto dst_v = find_v(dst);
 			if (dst_v->get_color() != 2) {
-				bfs_without(start_dfs->_get_dst());
+				bfs_without(start_bfs->_get_dst());
 				dst_v->edit_color(2);
 			}
 		}
@@ -309,7 +309,7 @@ public:
 
 	
 
-	VertexIterator min_elem_di()//по населению, но в дикстре по пути 
+	VertexIterator min_elem_di()//по населению
 	{
 		auto begin = _vertices.begin();
 		auto end = _vertices.end();
